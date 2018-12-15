@@ -32,17 +32,19 @@ public class Vehicle {
 			speed = speed + increase;
 			return speed;
 		}else {
-			return -1;
+			speed = maxSpeed;
+			return speed;
 		}
 		
 		
 	}
 	
-	public int brake(int decrease, int speed) {
-		if(speed - decrease >= 0) {
-			return speed;
+	public int brake(int decrease, int speed1) {
+		if(speed1 - decrease >= 0) {
+			int speed2 = speed1 - decrease;
+			return speed2;
 		}else {
-			return -1;
+			return 0;
 		}
 	}
 	
