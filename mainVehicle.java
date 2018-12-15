@@ -18,6 +18,10 @@ public class mainVehicle {
 			colour = userInput.nextLine();
 			wheels = 2;
 			
+			//Vehicle obj = new Vehicle(lPlateNum, colour, wheels); 
+			
+			//System.out.println("-=-=-=Bike=-=-=-\nThe licience plate num is " + obj.lPlateNum() + "\nThe colour of the bike is " + obj.colour() + "\nThe num of wheels is " +  obj.wheels() );
+			
 			Bike bikeObj = new Bike(lPlateNum, colour, wheels);
 			System.out.println("-=-=-=Bike=-=-=-\nThe licience plate num is " + bikeObj.lPlateNum() + "\nThe colour of the bike is " + bikeObj.colour() + "\nThe num of wheels is " +  bikeObj.wheels() );
 			
@@ -31,26 +35,25 @@ public class mainVehicle {
 			wheels = userInput.nextInt();
 			System.out.println("Enter the number of Doors you would like your car to have: ");
 			numOfDoors = userInput.nextInt();
-	
-			
 			
 			Vehicle obj = new Vehicle(lPlateNum, colour, wheels);
 			int numOfWheels = obj.wheels();
 			
 			System.out.println("Enter the speed you want to increase from 0: ");
 			int increase = userInput.nextInt();
-			System.out.println("Enter the speed you want to decrease from " + obj.accelerate(increase)  + ": ");
+			
+			int increasedValue = obj.accelerate(increase);
+			
+			System.out.println("Enter the speed you want to decrease from " + increasedValue + ": ");
 			int decrease = userInput.nextInt();
 			
-			if (obj.accelerate(increase) < 0) {
+			if (increasedValue < 0) {
 				System.out.println("You are not allowed to go that fast, the max is 270");
 				System.exit(0);
 			}
 			
-			if (obj.brake(decrease, obj.accelerate(increase)) == -1) {
-				System.out.println("You are not allowed to go that slow, the lowest is 0");
-				System.exit(0);
-			}
+			
+			int breakedSpeed = obj.brake(decrease, increasedValue);
 			
 			
 			Truck truckObj = new Truck(lPlateNum, colour, numOfWheels, numOfDoors);
@@ -58,8 +61,8 @@ public class mainVehicle {
 								"\nThe colour of the car is " + truckObj.colour() + 
 								"\nThe num of wheels is " +  truckObj.wheels() + 
 								"\nThe # of doors the car has is " + truckObj.numOfDoors() + 
-								"\nThe speed went from zero to " + obj.accelerate(increase) + 
-								"\nThen you decreased from " + obj.accelerate(increase) + " to " + obj.brake(decrease, obj.accelerate(increase))  );
+								"\nThe speed went from 0 to " + increasedValue + 
+								"\nThen you decreased from " + increasedValue + " to " + breakedSpeed  );
 			
 		}else {
 			System.out.println("Please enter one of the following inputs 'bike' or 'truck'.");
@@ -68,4 +71,3 @@ public class mainVehicle {
 	}
 }
 	
-
