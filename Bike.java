@@ -1,4 +1,3 @@
-
 public class Bike extends Vehicle{
 
 	private static int _wheels;
